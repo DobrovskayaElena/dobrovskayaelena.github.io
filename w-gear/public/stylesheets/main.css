@@ -160,8 +160,10 @@
     .navbar__menu p {
       position: relative;
       display: inline-block; }
-      .navbar__menu p a,
-      .navbar__menu p span {
+      .navbar__menu p:hover a {
+        border-top: 5px solid #005db4;
+        padding-top: 27px; }
+      .navbar__menu p:hover span {
         border-top: 5px solid #005db4;
         padding-top: 27px; }
   .navbar a,
