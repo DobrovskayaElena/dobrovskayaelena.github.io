@@ -40,18 +40,23 @@
       padding-right: 25px; }
       .header-container .toolbar .toolbar__inline i {
         padding-right: 5px; }
-  .header-container .login-container .login {
-    color: #005db4;
-    cursor: pointer;
-    margin-bottom: 20px; }
-    .header-container .login-container .login:hover ~ .form-hidden {
+  .header-container .login-container {
+    width: 280px;
+    height: 300px;
+    position: absolute; }
+    .header-container .login-container:hover .form-hidden {
       display: block; }
+    .header-container .login-container .login {
+      color: #005db4;
+      cursor: pointer;
+      margin-bottom: 20px;
+      position: relative; }
   .header-container .form-hidden {
     display: none; }
     .header-container .form-hidden .loginform {
       position: absolute;
-      right: 100px;
-      top: 59px;
+      right: 271px;
+      top: 29px;
       font-size: 10px;
       font-family: 'Ubuntu';
       display: -webkit-box;
@@ -236,7 +241,6 @@
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
-    opasity: 1;
     -webkit-animation-timing-function: steps(1);
             animation-timing-function: steps(1); }
   30% {
@@ -252,7 +256,6 @@
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
-    opasity: 1;
     -webkit-animation-timing-function: steps(1);
             animation-timing-function: steps(1); } }
 @keyframes slide {
@@ -261,7 +264,6 @@
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
-    opasity: 1;
     -webkit-animation-timing-function: steps(1);
             animation-timing-function: steps(1); }
   30% {
@@ -277,7 +279,6 @@
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
-    opasity: 1;
     -webkit-animation-timing-function: steps(1);
             animation-timing-function: steps(1); } }
 .search-menu {
@@ -1663,7 +1664,10 @@ footer {
   margin-top: 105px; }
 
 @media screen and (min-width: 480px) and (max-width: 767px) {
-  .header {
-    display: none; } }
+  .header-container {
+    display: none; }
+
+  .burger-box {
+    display: block; } }
 
 /*# sourceMappingURL=main.css.map */
