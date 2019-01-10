@@ -20,21 +20,26 @@
     }
   }
   .login-container {
+  width: 280px;
+  height: 300px;
+  position: absolute;
+  &:hover .form-hidden {
+      display: block;
+    }
   .login {
     color: #005db4;
     cursor: pointer;
     margin-bottom: 20px;
-	    &:hover~.form-hidden {
-      display: block;
-    }
+	position: relative;
+	    
   }
   }
   .form-hidden {
     display: none;
     .loginform {
       position: absolute;
-      right: 100px;
-      top: 59px;
+      right: 271px;
+      top: 29px;
       font-size: 10px;
       font-family: 'Ubuntu';
       display: flex;
