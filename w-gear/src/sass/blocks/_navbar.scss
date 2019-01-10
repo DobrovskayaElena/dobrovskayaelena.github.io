@@ -46,8 +46,11 @@
     & p {
       position: relative;
       display: inline-block;
-      & a,
-      span {
+      &:hover a {
+        border-top: 5px solid #005db4;
+        padding-top: 27px;
+      }
+	  &:hover span {
         border-top: 5px solid #005db4;
         padding-top: 27px;
       }
