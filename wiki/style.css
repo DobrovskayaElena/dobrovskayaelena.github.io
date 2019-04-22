@@ -13,34 +13,37 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 90%;
-  max-width: 90%;
+  width: 70%;
+  max-width: 70%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 #output {
   margin-right: 10px;
   margin-top: 10px;
-  width: 50%;
-  max-width: 50%;
-  position: relative;
-}
-
-#outputNews {
-  margin-left: 10px;
-  margin-top: 10px;
-  width: 50%;
-  max-width: 50%;
+  width: 60%;
+  max-width: 60%;
   position: relative;
 }
 
 img {
-  width: 200px;
+  width: 60%;
+  max-width: 60%;
   height: auto;
-  max-width: 200px;
-}
-
-.well {
-  height: 350px;
 }
 
 p {
@@ -52,11 +55,45 @@ p {
   margin-right: 5px;
 }
 
-#popular {
-  margin-left: 30px;
+#choice {
+  width: 200px;
+  max-width: 200px;
   margin-top: 10px;
+  position: absolute;
+  left: 20px;
+}
+
+#popular {
+  margin-top: 30px;
   font-size: 10px;
-  width: 40%;
+  width: 200px;
+  max-width: 200px;
+  position: absolute;
+  right: 20px;
+}
+
+.bestView {
+  height: 50px;
+}
+
+#clear {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#clearFav:hover,
+#clearLast:hover {
+  color: red;
+}
+
+.button:hover {
+  color: green;
+}
+
+.myFav {
+  position: absolute;
+  right: 100px;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {
@@ -75,18 +112,22 @@ p {
     max-width: 80%;
   }
   #output {
-    margin-top: 10px;
-    width: 80%;
-    max-width: 80%;
-  }
-  #outputNews {
-    margin-top: 10px;
-    width: 80%;
-    max-width: 80%;
+    margin-top: 50px;
+    width: 60%;
+    max-width: 60%;
+    font-size: 10px;
+    position: absolute;
+    left: 10px;
   }
   #popular {
-    margin-top: 10px;
+    margin-top: 30px;
     font-size: 10px;
-    width: 80%;
+    width: 30%;
+    max-width: 30%;
+    position: absolute;
+    right: 10px;
+  }
+  .myFav {
+    right: 50px;
   }
 }

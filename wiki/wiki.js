@@ -12,119 +12,177 @@ if (localStorage.getItem("best") === null) {
   console.log("Best was created")
 }
 
-$(function() {
 
+function wiki() {
+  $('#output').html('');
+  let searchTerm = $('#searchTerm').val();
+  let url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + '&format=json&callback=?';
+  $.ajax({
+      url: url,
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      async: true,
+      dataType: 'json',
+      success: function(data, status, jqXHR) {
+        console.log(data);
+        for (let i = 0; i <= 5; i++) { //data[1].length
+          $('#output').prepend('<div id="wiki' + i + '" class="view">Wiki<div class="well"><a href=' + data[3][i] + '><h4>' + data[1][i] + '</h4><p>' + data[2][i] + '</p></a><button id="add' + i + '" class="button">Add to Favorite</button></div></div>');
+        }
+      },
+    })
+
+    .done(function() {
+      console.log('success');
+    })
+
+    .fail(function() {
+      console.log('error');
+    })
+
+    .always(function() {
+      console.log('complete');
+    })
+}
+
+
+
+function newsSearch() {
+  $('#output').html('');
+  let searchTerm = $('#searchTerm').val();
+  $.ajax({
+      url: "https://newsapi.org/v2/everything?q=" + searchTerm + "&from=2019-04-18&sortBy=popularity&apiKey=b98968fec60c4d94832c527a47d11028",
+      type: "GET",
+      async: true,
+      success: function(data) {
+        for (let i = 0; i < data.articles.length; i++) {
+          let source = data.articles[i].source;
+          if (data.articles[i].author !== null && source.id !== null) {
+            $('#output').prepend('<div id="news' + i + '" class="view">News<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews"' + i + '" class="button">Add to Favorite</button></div></div>');
+          }
+        }
+      },
+    })
+
+    .done(function() {
+      console.log('success');
+    })
+
+    .fail(function() {
+      console.log('error');
+    })
+
+    .always(function() {
+      console.log('complete');
+    })
+}
+
+
+function businessSearch() {
+  $('#output').html('');
+  let searchTerm = $('#searchTerm').val();
+  $.ajax({
+      url: "https://newsapi.org/v2/top-headlines?q=" + searchTerm + "&category=business&apiKey=b98968fec60c4d94832c527a47d11028",
+      type: "GET",
+      async: true,
+      success: function(data) {
+        for (let i = 0; i < data.articles.length; i++) {
+          let source = data.articles[i].source;
+          if (data.articles[i].author !== null && source.id !== null) {
+            $('#output').prepend('<div id="news' + i + '" class="view">Business<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
+          }
+        }
+      },
+    })
+
+    .done(function() {
+      console.log('success');
+    })
+
+    .fail(function() {
+      console.log('error');
+    })
+
+    .always(function() {
+      console.log('complete');
+    })
+}
+
+
+
+function techCrunchSearch() {
+  $('#output').html('');
+  let searchTerm = $('#searchTerm').val();
+  $.ajax({
+      url: "https://newsapi.org/v2/top-headlines?q=" + searchTerm + "&sources=techcrunch&apiKey=b98968fec60c4d94832c527a47d11028",
+      type: "GET",
+      async: true,
+      success: function(data) {
+        for (let i = 0; i < data.articles.length; i++) {
+          let source = data.articles[i].source;
+          if (data.articles[i].author !== null && source.id !== null) {
+            $('#output').prepend('<div id="news' + i + '" class="view">TechCrunch<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
+          }
+        }
+      },
+    })
+
+    .done(function() {
+      console.log('success');
+    })
+
+    .fail(function() {
+      console.log('error');
+    })
+
+    .always(function() {
+      console.log('complete');
+    })
+}
+
+
+
+function wallStreetSearch() {
+  $('#output').html('');
+  let searchTerm = $('#searchTerm').val();
+  $.ajax({
+      url: "https://newsapi.org/v2/everything?q=" + searchTerm + "&domains=wsj.com&apiKey=b98968fec60c4d94832c527a47d11028",
+      type: "GET",
+      async: true,
+      success: function(data) {
+        for (let i = 0; i < data.articles.length; i++) {
+          let source = data.articles[i].source;
+          if (data.articles[i].author !== null && source.id !== null) {
+            $('#output').prepend('<div id="news' + i + '" class="view">Wall Street Journal<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
+          }
+        }
+      },
+    })
+
+    .done(function() {
+      console.log('success');
+    })
+
+    .fail(function() {
+      console.log('error');
+    })
+
+    .always(function() {
+      console.log('complete');
+    })
+}
+$(function() {
   $('#searchTerm').keypress(function(e) {
     if (e.keyCode === 13) {
-      $('#output').html('');
-      let searchTerm = $('#searchTerm').val();
-      let url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + '&format=json&callback=?';
-      $.ajax({
-        url: url,
-        type: 'GET',
-        contentType: 'application/json; charset=utf-8',
-        async: false,
-        dataType: 'json',
-        success: function(data, status, jqXHR) {
-          console.log(data);
-          for (let i = 0; i <= 5; i++) { //data[1].length
-            $('#output').prepend('<div id="wiki' + i + '" class="view"><div class="well"><a href=' + data[3][i] + '><h4>' + data[1][i] + '</h4><p>' + data[2][i] + '</p></a><button id="add' + i + '" class="button">Add to Favorite</button></div></div>');
-          }
-        },
-      })
+      wiki();
+      newsSearch();
     }
-    console.log(e);
   });
-
   $('#search').on('click', function() {
-    $('#output').html('');
-    let searchTerm = $('#searchTerm').val();
-    let url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm + '&format=json&callback=?';
-    $.ajax({
-        url: url,
-        type: 'GET',
-        contentType: 'application/json; charset=utf-8',
-        async: true,
-        dataType: 'json',
-        success: function(data, status, jqXHR) {
-          console.log(data);
-          for (let i = 0; i <= 5; i++) { //data[1].length
-            $('#output').prepend('<div id="wiki' + i + '" class="view"><div class="well"><a href=' + data[3][i] + '><h4>' + data[1][i] + '</h4><p>' + data[2][i] + '</p></a><button id="add' + i + '" class="button">Add to Favorite</button></div></div>');
-          }
-        },
-      })
-      .done(function() {
-        console.log('success');
-
-      })
-      .fail(function() {
-        console.log('error');
-      })
-      .always(function() {
-        console.log('complete');
-      });
+    wiki();
+    newsSearch();
   });
 });
 
-$(function() {
-
-  $('#searchTerm').keypress(function(e) {
-    if (e.keyCode === 13) {
-      $('#outputNews').html('');
-      let searchTerm = $('#searchTerm').val();
-      $.ajax({
-        url: "https://newsapi.org/v2/everything?q=" + searchTerm + "&from=2019-04-18&sortBy=popularity&apiKey=b98968fec60c4d94832c527a47d11028",
-        type: "GET",
-
-        async: true,
-
-        success: function(data) {
-          console.log(data);
-          for (let i = 0; i < data.articles.length; i++) {
-            let source = data.articles[i].source;
-            if (data.articles[i].author !== null && source.id !== null) {
-              $('#outputNews').prepend('<div id="news' + i + '" class="view"><div class="well"><a href=' + data.articles[i].url + '><img src=' + data.articles[i].urlToImage + '><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
-            }
-          }
-        },
-
-
-      });
-    }
-    console.log(e);
-  });
-
-  $('#search').on('click', function() {
-    $('#outputNews').html('');
-    let searchTerm = $('#searchTerm').val();
-    $.ajax({
-        url: "https://newsapi.org/v2/everything?q=" + searchTerm + "&from=2019-04-18&sortBy=popularity&apiKey=b98968fec60c4d94832c527a47d11028",
-        type: "GET",
-
-        async: true,
-
-        success: function(data) {
-          console.log(data);
-          for (let i = 0; i < data.articles.length; i++) {
-            let source = data.articles[i].source;
-            if (data.articles[i].author !== null && source.id !== null) {
-              $('#outputNews').prepend('<div id="news' + i + '" class="view"><div class="well"><a href=' + data.articles[i].url + '><img src=' + data.articles[i].urlToImage + '><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
-            }
-          }
-        },
-      })
-
-      .done(function() {
-        console.log('success');
-      })
-      .fail(function() {
-        console.log('error');
-      })
-      .always(function() {
-        console.log('complete');
-      });
-  });
-});
 
 
 /* Создание списка 'favorite' */
@@ -139,6 +197,7 @@ $('#searchTerm').keypress(function(e) {
   }
 });
 
+
 $('#search').on('click', function() {
   let favObject = JSON.parse(localStorage.getItem('favorite'));
   if ($('#searchTerm').val() !== "") {
@@ -146,6 +205,7 @@ $('#search').on('click', function() {
     localStorage.setItem('favorite', JSON.stringify(favObject));
   }
 });
+
 
 let favInfo = JSON.parse(localStorage.getItem('favorite') || []);
 
@@ -163,19 +223,32 @@ getFav();
 $(function() {
   $('.favList').on('click', function(event) {
     document.getElementById('searchTerm').value = this.innerHTML;
+    wiki();
+    newsSearch();
   });
 });
 
 $(document).on('click', '.view', function(e) {
-  let id = document.getElementById(this.id);
-  console.log(id);
+  var target = $(event.target);
+  if (!(target.is("button"))) {
+    return false;
+  } else {
+    let id = document.getElementById(this.id);
+    $('.popular .button').remove();
+    $('.popular .well').addClass('bestView');
+    let bestObject = JSON.parse(localStorage.getItem('best'));
+    bestObject.push(document.getElementById(this.id).innerHTML);
+    console.log(bestObject);
+    localStorage.setItem('best', JSON.stringify(bestObject));
+    localStorage.getItem('best');
+  }
+  $('#popular').html(JSON.parse(localStorage.getItem('best')));
+  $('.popular .button').remove();
+  $('.popular .well').attr("heigth", "200");
+});
 
-  let bestObject = JSON.parse(localStorage.getItem('best'));
-  bestObject.push(document.getElementById(this.id).innerHTML);
-  console.log(bestObject);
-  localStorage.setItem('best', JSON.stringify(bestObject));
 
-})
+/* Добавление в Favorite List */
 
 let bestInfo = JSON.parse(localStorage.getItem('best') || []);
 
@@ -186,6 +259,48 @@ function getBest() {
   for (let j = 0; j < bestArray.length; j++) {
     $('#popular').html('');
     $('#popular').prepend(bestArray);
+    $('.popular .button').remove();
   }
 }
-getBest();
+getBest()
+
+
+/* Выбор Select */
+
+$('#dropdownList').on('change', function() {
+  let selectVal = $("#dropdownList option:selected").val();
+  if (selectVal === '2') {
+    newsSearch();
+  } else if (selectVal === '3') {
+    wiki();
+  } else if (selectVal === '4') {
+    businessSearch();
+  } else if (selectVal === '5') {
+    techCrunchSearch();
+  } else if (selectVal === '6') {
+    wallStreetSearch();
+  } else if (selectVal === '1') {
+    $('#output').html('');
+  }
+});
+
+
+/* Очистка localStorage */
+
+$(document).on('click', '#clearFav', function() {
+  localStorage.removeItem('best');
+  if (localStorage.getItem("best") === null) {
+    localStorage.setItem("best", JSON.stringify([]));
+    $('#popular').html(JSON.parse(localStorage.getItem('best')));
+  }
+});
+
+
+
+$(document).on('click', '#clearLast', function() {
+  localStorage.removeItem('favorite');
+  if (localStorage.getItem("favorite") === null) {
+    localStorage.setItem("favorite", JSON.stringify([]));
+    $('#last').html(JSON.parse(localStorage.getItem('favorite')));
+  }
+});
