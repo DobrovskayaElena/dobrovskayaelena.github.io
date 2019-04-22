@@ -26,8 +26,10 @@ function wiki() {
       success: function(data, status, jqXHR) {
         console.log(data);
         for (let i = 0; i <= 5; i++) { //data[1].length
+            if(data[1][i] !== undefined) {
           $('#output').prepend('<div id="wiki' + i + '" class="view">Wiki<div class="well"><a href=' + data[3][i] + '><h4>' + data[1][i] + '</h4><p>' + data[2][i] + '</p></a><button id="add' + i + '" class="button">Add to Favorite</button></div></div>');
         }
+       }
       },
     })
 
@@ -170,6 +172,70 @@ function wallStreetSearch() {
       console.log('complete');
     })
 }
+
+
+function googleSearch() {
+  $('#output').html('');
+  let searchTerm = $('#searchTerm').val();
+  $.ajax({
+      url: "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=b98968fec60c4d94832c527a47d11028",
+      type: "GET",
+      async: true,
+      success: function(data) {
+        for (let i = 0; i < data.articles.length; i++) {
+          let source = data.articles[i].source;
+          if (data.articles[i].author !== null && source.id !== null) {
+            $('#google').prepend('<div id="news' + i + '" class="view"><div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
+          }
+        }
+      },
+    })
+
+    .done(function() {
+      console.log('success');
+    })
+
+    .fail(function() {
+      console.log('error');
+    })
+
+    .always(function() {
+      console.log('complete');
+    })
+}
+googleSearch()
+
+function popularSearch() {
+  $('#output').html('');
+  let searchTerm = $('#searchTerm').val();
+  $.ajax({
+      url: "https://newsapi.org/v2/everything?q=apple&from=2019-04-21&to=2019-04-21&sortBy=popularity&apiKey=b98968fec60c4d94832c527a47d11028",
+      type: "GET",
+      async: true,
+      success: function(data) {
+        for (let i = 0; i < data.articles.length; i++) {
+          let source = data.articles[i].source;
+          if (data.articles[i].author !== null && source.id !== null) {
+            $('#output').prepend('<div id="news' + i + '" class="view">Popular<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
+          }
+        }
+      },
+    })
+
+    .done(function() {
+      console.log('success');
+    })
+
+    .fail(function() {
+      console.log('error');
+    })
+
+    .always(function() {
+      console.log('complete');
+    })
+}
+
+
 $(function() {
   $('#searchTerm').keypress(function(e) {
     if (e.keyCode === 13) {
@@ -279,6 +345,8 @@ $('#dropdownList').on('change', function() {
     techCrunchSearch();
   } else if (selectVal === '6') {
     wallStreetSearch();
+  } else if (selectVal === '7') {
+    popularSearch();
   } else if (selectVal === '1') {
     $('#output').html('');
   }

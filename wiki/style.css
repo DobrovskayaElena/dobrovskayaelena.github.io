@@ -34,9 +34,9 @@
 
 #output {
   margin-right: 10px;
-  margin-top: 10px;
-  width: 60%;
-  max-width: 60%;
+  margin-top: 70px;
+  width: 80%;
+  max-width: 80%;
   position: relative;
 }
 
@@ -96,6 +96,11 @@ p {
   font-weight: bold;
 }
 
+.googleResult {
+  font-weight: bold;
+  margin-top: 30px;
+}
+
 @media screen and (max-width: 600px) {
   #news {
     display: -webkit-box;
@@ -112,22 +117,32 @@ p {
     max-width: 80%;
   }
   #output {
-    margin-top: 50px;
+    margin-top: 80px;
     width: 60%;
     max-width: 60%;
     font-size: 10px;
-    position: absolute;
-    left: 10px;
+    margin-left: 45px;
   }
   #popular {
     margin-top: 30px;
     font-size: 10px;
-    width: 30%;
-    max-width: 30%;
+    width: 20%;
+    max-width: 20%;
     position: absolute;
     right: 10px;
   }
   .myFav {
     right: 50px;
+    font-size: 12px;
+  }
+  .googleResult {
+  margin-top: 20px;
+  font-size: 12px;
+}
+  #google {
+    margin-top: 30px;
+    font-size: 10px;
+    width: 60%;
+    max-width: 60%;
   }
 }
