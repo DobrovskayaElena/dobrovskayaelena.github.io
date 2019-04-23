@@ -27,7 +27,7 @@ function wiki() {
         console.log(data);
         for (let i = 0; i <= 5; i++) { //data[1].length
             if(data[1][i] !== undefined) {
-          $('#output').prepend('<div id="wiki' + i + '" class="view">Wiki<div class="well"><a href=' + data[3][i] + '><h4>' + data[1][i] + '</h4><p>' + data[2][i] + '</p></a><button id="add' + i + '" class="button">Add to Favorite</button></div></div>');
+          $('#output').prepend('<div id="wiki' + i + '" class="view">Wiki<div class="well"><a href="' + data[3][i] + '"><h4>' + data[1][i] + '</h4><p>' + data[2][i] + '</p></a><button id="add' + i + '" class="button">Add to Favorite</button></div></div>');
         }
        }
       },
@@ -90,7 +90,7 @@ function businessSearch() {
         for (let i = 0; i < data.articles.length; i++) {
           let source = data.articles[i].source;
           if (data.articles[i].author !== null && source.id !== null) {
-            $('#output').prepend('<div id="news' + i + '" class="view">Business<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
+            $('#output').prepend('<div id="news' + i + '" class="view">Business<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addBusiness' + i + '" class="button">Add to Favorite</button></div></div>');
           }
         }
       },
@@ -122,7 +122,7 @@ function techCrunchSearch() {
         for (let i = 0; i < data.articles.length; i++) {
           let source = data.articles[i].source;
           if (data.articles[i].author !== null && source.id !== null) {
-            $('#output').prepend('<div id="news' + i + '" class="view">TechCrunch<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
+            $('#output').prepend('<div id="news' + i + '" class="view">TechCrunch<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addTech' + i + '" class="button">Add to Favorite</button></div></div>');
           }
         }
       },
@@ -154,7 +154,7 @@ function wallStreetSearch() {
         for (let i = 0; i < data.articles.length; i++) {
           let source = data.articles[i].source;
           if (data.articles[i].author !== null && source.id !== null) {
-            $('#output').prepend('<div id="news' + i + '" class="view">Wall Street Journal<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
+            $('#output').prepend('<div id="news' + i + '" class="view">Wall Street Journal<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addWall' + i + '" class="button">Add to Favorite</button></div></div>');
           }
         }
       },
@@ -185,7 +185,7 @@ function googleSearch() {
         for (let i = 0; i < data.articles.length; i++) {
           let source = data.articles[i].source;
           if (data.articles[i].author !== null && source.id !== null) {
-            $('#google').prepend('<div id="news' + i + '" class="view"><div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
+            $('#google').prepend('<div id="news' + i + '" class="view"><div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><p>' + data.articles[i].title + '</p></a><button id="addGoogle' + i + '" class="button">Add to Favorite</button></div></div>');
           }
         }
       },
@@ -216,7 +216,7 @@ function popularSearch() {
         for (let i = 0; i < data.articles.length; i++) {
           let source = data.articles[i].source;
           if (data.articles[i].author !== null && source.id !== null) {
-            $('#output').prepend('<div id="news' + i + '" class="view">Popular<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addNews' + i + '" class="button">Add to Favorite</button></div></div>');
+            $('#output').prepend('<div id="news' + i + '" class="view">Popular<div class="well"><a href="' + data.articles[i].url + '"><img src="' + data.articles[i].urlToImage + '"><h4>' + data.articles[i].author + '</h4><p>' + data.articles[i].title + '</p></a><button id="addPopular' + i + '" class="button">Add to Favorite</button></div></div>');
           }
         }
       },
