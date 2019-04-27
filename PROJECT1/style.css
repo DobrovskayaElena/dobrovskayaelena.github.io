@@ -342,6 +342,11 @@ img {
   cursor: pointer;
 }
 
+table {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 p {
   margin-top: 5px;
   font-size: 10px;
@@ -384,13 +389,14 @@ tr {
   color: red;
 }
 
-#edit:hover,
-#delete:hover {
+.edit:hover,
+.delete:hover {
   cursor: pointer;
 }
 
 .mytable:hover {
-  background: #87CEFA;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 @media screen and (max-width: 600px) {

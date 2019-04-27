@@ -21,24 +21,37 @@ let burger = document.getElementById("burger").onclick = function() {
 
 let modal = document.getElementById('myModal');
 let btn = document.getElementById("add-btn");
-let span = document.getElementsByClassName("close")[0];
+
+let modalEdit = document.getElementById('myModalEdit');
+let btnEdit = document.getElementById("add-btn");
+
+let btnCancel = document.getElementById("cancel-album-button");
+let btnCancelEdit = document.getElementById("cancel-album-button-edit");
 
 btn.onclick = function() {
   modal.style.display = "block";
 }
 
-span.onclick = function() {
+$("#close").on('click', function() {
   modal.style.display = "none";
-}
+});
+
+$("#closeEdit").on('click', function() {
+  modalEdit.style.display = "none";
+});
+
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
-let btnCancel = document.getElementById("cancel-album-button");
 btnCancel.onclick = function() {
   modal.style.display = "none";
+}
+
+btnCancelEdit.onclick = function() {
+  modalEdit.style.display = "none";
 }
 
 function random() {
@@ -54,7 +67,7 @@ function funсonload() {
     for (let i = 0; i < returnObj.length; i++) {
       let infoData = returnObj[i].album;
       for (let j = 0; j < infoData.length; j++) {
-        info += '<table cellspacing="5" cellpadding="10" id="mytable' + infoData[j].id + '" class="mytable" data-id="' + infoData[j].id + '"><tbody><tr><td><img src="' + infoData[j].url + '"></img></td><td>' + infoData[j].name + '<p class="add-info"><big>Duration: </big> ' + infoData[j].time + '</p><p class="add-info"><big>Year: </big>' + infoData[j].year + '</p><p><button id="edit" class="open-modal-btn">Edit</button><button id="delete" class="open-modal-btn">Delete</button></p></td></tr></tbody></table>';
+        info += '<table cellspacing="5" cellpadding="10" id="mytable' + infoData[j].id + '" class="mytable" data-id="' + infoData[j].id + '"><tbody><tr><td><img src="' + infoData[j].url + '"></img></td><td>' + infoData[j].name + '<p class="add-info"><big>Duration: </big> ' + infoData[j].time + '</p><p class="add-info"><big>Year: </big>' + infoData[j].year + '</p><p><button id="edit"' + i + '" class="open-modal-btn edit">Edit</button><button id="delete' + i + '" class="open-modal-btn delete">Delete</button></p></td></tr></tbody></table>';
 
       }
 
@@ -134,6 +147,7 @@ let styles = document.getElementById("styles").onclick = function() {
 
   let albumsInfo = document.getElementById("albums-info");
   albumsInfo.innerHTML = info;
+
 }
 
 /* Create songs list */
@@ -191,10 +205,12 @@ $('#add-album-button').bind('touchstart click', function() {
   let newObject = new Object();
 
   newObject.url = $('form input[name="artist-cover"]').val();
+
   newObject.artist = $('form input[name="artist"]').val();
   newObject.id = idAlbum;
   newObject.genre = [$('form input[name="artist-genre"]').val()];
   newObject.style = [$('form input[name="artist-style"]').val()];
+
   newObject.album = [{
     "url": $('form input[name="album-cover"]').val(),
     "name": $('form input[name="album-title"]').val(),
@@ -237,4 +253,102 @@ $(document).on('click', '.mytable', function() {
 
     }
   })
+})
+
+let idEdit;
+
+function editObj() {
+  $(document).on('click', '.mytable', function(e) {
+    var target = $(e.target);
+    if (!(target.is($('.edit')))) {
+      return false;
+    } else {
+      modalEdit.style.display = "block";
+      let album = $(this).attr("data-id");
+      let id = document.getElementById(this.id);
+      $.each(returnObj, function(index, obj) {
+        if (album == obj.id) {
+
+          $('#formEdit input[name="artist-cover"]').val(this.url);
+          $('#formEdit input[name="artist"]').val(this.artist);
+          $('#formEdit input[name="artist-genre"]').val(this.genre);
+          $('#formEdit input[name="artist-style"]').val(this.style);
+          $('#formEdit input[name="album-cover"]').val(this.album['0'].url),
+            $('#formEdit input[name="album-title"]').val(this.album['0'].name),
+            $('#formEdit input[name="album-time"]').val(this.album['0'].time),
+            $('#formEdit input[name="album-year"]').val(this.album['0'].year),
+            $('#formEdit input[name="songs[]"]').val(this.album['0'].songs);
+
+          idEdit = this.id;
+
+        }
+      })
+    }
+  })
+}
+editObj()
+
+
+
+$(document).on('click', '#add-album-button-edit', function() {
+
+  let album = $(this).attr("data-id");
+  let id = document.getElementById(this.id);
+  $.each(returnObj, function(index, obj) {
+    if (returnObj[index].id == obj.id) {
+      returnObj.splice(index, 1);
+      return false;
+    }
+  });
+
+  localStorage.setItem('project', JSON.stringify(returnObj));
+  localStorage.getItem('project');
+
+  let newObject = new Object();
+
+  newObject.url = $('#formEdit input[name="artist-cover"]').val();
+
+  newObject.artist = $('#formEdit input[name="artist"]').val();
+  newObject.id = idEdit;
+  newObject.genre = [$('#formEdit input[name="artist-genre"]').val()];
+  newObject.style = [$('#formEdit input[name="artist-style"]').val()];
+
+  newObject.album = [{
+    "url": $('#formEdit input[name="album-cover"]').val(),
+    "name": $('#formEdit input[name="album-title"]').val(),
+    "time": $('#formEdit input[name="album-time"]').val(),
+    "id": idEdit,
+    "year": $('#formEdit input[name="album-year"]').val(),
+    "songs": $('#formEdit input[name="songs[]"]').map(function() {
+      return this.value
+    }).get()
+  }];
+
+  let bestObject = JSON.parse(localStorage.getItem('project'));
+  bestObject.push(newObject);
+  console.log(bestObject);
+
+  localStorage.setItem('project', JSON.stringify(bestObject));
+  localStorage.getItem('project');
+
+  funсonload();
+
+})
+
+
+$(document).on('click', '.delete', function() {
+  let album = $(this).attr("data-id");
+  let id = document.getElementById(this.id);
+  $.each(returnObj, function(index, obj) {
+    if (returnObj[index].id == obj.id) {
+      returnObj.splice(index, 1);
+      return false;
+    }
+  });
+
+  localStorage.setItem('project', JSON.stringify(returnObj));
+  localStorage.getItem('project');
+
+  funсonload();
+
 })
