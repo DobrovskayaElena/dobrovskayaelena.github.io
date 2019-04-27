@@ -46,13 +46,17 @@ function wiki() {
     })
 }
 
-
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let dd1 = String(today.getDate() - 1).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0');
+  let yyyy = today.getFullYear();
 
 function newsSearch() {
   $('#output').html('');
   let searchTerm = $('#searchTerm').val();
   $.ajax({
-      url: "https://newsapi.org/v2/everything?q=" + searchTerm + "&from=2019-04-18&sortBy=popularity&apiKey=b98968fec60c4d94832c527a47d11028",
+      url: "https://newsapi.org/v2/everything?q=" + searchTerm + "&from="+yyyy+"-"+mm+"-"+dd1+"&sortBy=popularity&apiKey=b98968fec60c4d94832c527a47d11028",
       type: "GET",
       async: true,
       success: function(data) {
@@ -207,16 +211,13 @@ googleSearch()
 
 function popularSearch() {
   $('#output').html('');
-  let today = new Date();
-  let dd = String(today.getDate()).padStart(2, '0');
-  let mm = String(today.getMonth() + 1).padStart(2, '0');
-  let yyyy = today.getFullYear();
   let searchTerm = $('#searchTerm').val();
   $.ajax({
-      url: "https://newsapi.org/v2/everything?q=apple&from="+yyyy+"-"+mm+"-"+dd+"&to="+yyyy+"-"+mm+"-"+dd+"&sortBy=popularity&apiKey=b98968fec60c4d94832c527a47d11028",
+      url: "https://newsapi.org/v2/everything?q=apple&from="+yyyy+"-"+mm+"-"+dd1+"&to="+yyyy+"-"+mm+"-"+dd+"&sortBy=popularity&apiKey=b98968fec60c4d94832c527a47d11028",
       type: "GET",
       async: true,
       success: function(data) {
+      	console.log(data);
         for (let i = 0; i < data.articles.length; i++) {
           let source = data.articles[i].source;
           if (data.articles[i].author !== null && source.id !== null) {
