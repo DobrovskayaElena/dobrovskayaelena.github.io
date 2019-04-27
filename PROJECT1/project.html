@@ -78,12 +78,12 @@
                   <p>Add Songs:</p>
 
 
-                  <input type="text" name="songs[]" id="songs" class="add-form" placeholder="Enter the song" value="" data-text><span id="clone">Add Song</span>
+                  <input type="text" name="songs[]" class="add-form" placeholder="Enter the song" value="" data-text><span id="clone">Add Song</span>
 
 
               </div>
               <div class="modal-footer">
-                <input type="submit" value='Add' id="add-album-button" class="add-in-form-yes">
+                <input type="submit" value='Add' name="add-album-button" id="add-album-button" class="add-in-form-yes">
                 <input type="button" value='Cancel' id="cancel-album-button" class="add-in-form-no">
 
               </div>
@@ -92,7 +92,7 @@
 
           </div>
         </div>
-        <div id="myModalEdit" class="modal">
+        <!-- <div id="myModalEdit" class="modal">
           <div class="modal-content">
             <div class="modal-header">
               <span class="close" id="closeEdit">&times;</span>
@@ -124,24 +124,16 @@
                 <label for="album-year">Year:
 								<input type="text" name="album-year" id= "album-year" class="add-form" placeholder="Enter the year of edition" value="" minlength="4" maxlength="4">
 							</label>
-
-
                 <p>Add Songs:</p>
-
-
-                <input type="text" name="songs[]" id="songs" class="add-form" placeholder="Enter the song" value="" data-text><span id="clone">Add Song</span>
-
-
+                <input type="text" name="songs[]" class="add-form songs" placeholder="Enter the song" value="" data-text><span id="clone">Add Song</span>
             </div>
             <div class="modal-footer">
-              <input type="submit" value='Add' id="add-album-button-edit" class="add-in-form-yes">
+              <input type="submit" value='Update' id="add-album-button-edit" class="add-in-form-yes">
               <input type="button" value='Cancel' id="cancel-album-button-edit" class="add-in-form-no">
-
             </div>
             </form>
           </div>
-
-        </div>
+        </div> -->
         <div class="center-content" id="center-content">
           <div class="center-content_info" class="artists-info" id="artists-info">
           </div>
