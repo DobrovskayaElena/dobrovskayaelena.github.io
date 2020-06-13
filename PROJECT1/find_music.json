@@ -1,6 +1,6 @@
 var project = [
   {
-    "url": "http://static.jetune.fm/ai/200x200/1475.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Alphaville_on_stage_2005.jpg/274px-Alphaville_on_stage_2005.jpg",
     "artist": "Alphaville",
     "id": 1,
     "genre": [
@@ -12,7 +12,7 @@ var project = [
     ],
     "album": [
       {
-        "url": "http://static.jetune.fm/i/200x200/177741.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/ru/thumb/f/f1/Alphaville_Forever_Young.jpeg/274px-Alphaville_Forever_Young.jpeg",
         "name": "Forever Young",
         "time": "80:05",
         "id": 1,
@@ -34,7 +34,7 @@ var project = [
 ]
   },
   {
-    "url": "http://static.jetune.fm/ai/200x200/497.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/A-ha_in_concerto.JPG/300px-A-ha_in_concerto.JPG",
     "artist": "A-Ha",
     "id": 2,
     "genre": [
@@ -47,7 +47,7 @@ var project = [
     ],
     "album": [
       {
-        "url": "http://static.jetune.fm/i/200x200/183910.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/ru/thumb/8/8f/Hunting_High_and_Low.jpg/274px-Hunting_High_and_Low.jpg",
         "name": "Hunting High And Low",
         "time": "193:27",
         "id": 2,
@@ -68,7 +68,7 @@ var project = [
 ]
   },
   {
-    "url": "http://static.jetune.fm/ai/200x200/9477.jpg",
+    "url": "https://img.discogs.com/yoaIYrA574_cbxSfZwqG3DmE4e4=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/A-15443-1461658455-6904.bmp.jpg",
     "artist": "Dick Hyman",
     "id": 3,
     "genre": [
@@ -85,7 +85,7 @@ var project = [
     ],
     "album": [
       {
-        "url": "http://static.jetune.fm/i/200x200/192275.jpg",
+        "url": "https://img.discogs.com/kowIaj9K6tHVnumYtoe91oKcPoM=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-61401-1553634111-6162.jpeg.jpg",
         "name": "The Age Of Electronicus",
         "time": "37:30",
         "id": 3,
