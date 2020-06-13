@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  color: #2F4F4F;
+}
+
+.App-city {
+  color: #20B2AA;
+}
+
+.App-temperature {
+  color: #2F4F4F;
+}
+
+button {
+  width: 100px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2F4F4F;
+  color: navajowhite;
+}
+
+.button:active {
+  background: #2F4F4F;
+  color: navajowhite;
+}
+
+table {
+  border-collapse: collapse;
+  width: 30%;
+}
+
+td, th {
+  border: 1px solid #2F4F4F;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
